@@ -59,6 +59,10 @@ public class Exam
 		return;
 	}
 	
+	
+	public void getExamName(){
+		return text;	
+	}	
 	public void print()
 	{
 		System.out.println("\n" + text + "\n");
