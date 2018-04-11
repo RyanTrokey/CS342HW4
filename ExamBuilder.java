@@ -23,6 +23,8 @@ public class ExamBuilder
 		
 		int printCheck = 0;
 		
+		int uploadCheck = 0;
+		
 		Scanner s = ScannerFactory.getScanner();
 		
 		String input = s.nextLine();
@@ -69,6 +71,8 @@ public class ExamBuilder
 					System.out.println("\nExam CREATED...");
 					
 					printCheck = 1;
+					
+					uploadCheck = 1;
 
 				}
 				catch(Exception ex)
@@ -80,6 +84,14 @@ public class ExamBuilder
 			else if(action == 2)
 			{
 				System.out.println("\nAction 'ADD QUESTION' selected...\n");
+				if(uploadCheck == 0)
+				{
+					System.out.print("\nSince this is the first question to be added, please enter a name for the exam: ");
+					s = ScannerFactory.getScanner();
+					String name = s.nextLine();
+					exam.nameExam(name);
+					System.out.println("\nYou named the exam '" + name + "'. Continue with adding questions.");
+				}
 				System.out.println("Please enter '1' to add a short answer question\nPlease enter '2' to add a multiple choice single answer question\nPlease enter '3' to add a multiple choice multiple answer question\nPlease enter '4' to add a NumQuestion question");
 				s = ScannerFactory.getScanner();
 				input = s.nextLine();
