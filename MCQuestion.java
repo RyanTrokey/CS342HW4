@@ -7,6 +7,7 @@ public abstract class MCQuestion extends Question
 	
 	protected MCQuestion()
 	{
+		answers = new ArrayList<MCAnswer>();
 		return;
 	}
 	
