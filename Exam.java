@@ -59,10 +59,15 @@ public class Exam
 		return;
 	}
 	
+	public void nameExam(String Text)
+	{
+		text = Text;
+	}
 	
 	public String getExamName(){
 		return text;	
-	}	
+	}
+	
 	public void print()
 	{
 		System.out.println("\n" + text + "\n");
