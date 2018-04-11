@@ -275,7 +275,7 @@ public class ExamBuilder
 			{
 				System.out.println("\nAction 'SAVE EXAM' selected...\n");
 				
-				/*try
+				try
 				{
 					System.out.print("\nEnter the name of the file you would like to save to with extension: ");
 					s = ScannerFactory.getScanner();
@@ -287,7 +287,7 @@ public class ExamBuilder
 				catch(Exception ex)
 				{
 					System.out.println("\nERROR WITH FILE...");
-				}*/
+				}
 				
 				
 			}
