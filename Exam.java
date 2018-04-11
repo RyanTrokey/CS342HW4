@@ -60,7 +60,7 @@ public class Exam
 	}
 	
 	
-	public void getExamName(){
+	public String getExamName(){
 		return text;	
 	}	
 	public void print()
