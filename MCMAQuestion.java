@@ -19,6 +19,7 @@ public class MCMAQuestion extends MCQuestion
 		super.text = Text;
 		super.maxValue = MaxValue;
 		super.answers = new ArrayList<MCAnswer>();
+		studentAnswer = new ArrayList<Answer>();
 		for(int i=0; i<5; i++)
 		{
 			MCMAAnswer answer = new MCMAAnswer(ans.get(i), val.get(i));
