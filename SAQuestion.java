@@ -50,14 +50,20 @@ public class SAQuestion extends Question
     return;
   }
   
-  public double getValue(){
-    if(studentAnswer.getCredit(rightAnswer) > 0){
-      return studentAnswer.getCredit(rightAnswer);
-    }
-    else{
-      return 0.0;
-    }
-  }
+ public double getValue()
+	{
+		double val = 0.0;
+		
+		SAAnswer s = (SAAnswer)studentAnswer;
+		SAAnswer r = (SAAnswer)rightAnswer;
+		
+		if(s.text.equals(r.text))
+			val = maxValue;
+		
+		System.out.println("SA: " + val);
+		
+		return val;
+	}
   
   public void save(PrintWriter p){
     p.println(maxValue);
