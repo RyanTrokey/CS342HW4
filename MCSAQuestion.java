@@ -79,9 +79,18 @@ public class MCSAQuestion extends MCQuestion
     return;
   }
   
-  public double getValue(){
-    return super.getValue((MCSAAnswer)studentAnswer) * maxValue;
-  }
+  public double getValue()
+	{
+		double val = 0.0;
+		
+		MCSAAnswer a = (MCSAAnswer)studentAnswer;
+		
+		val = a.creditIfSelected * maxValue;
+		
+		System.out.println("MCSA: " + val);
+		
+		return val;
+	}
   
   public void save(PrintWriter p){
     p.println(maxValue);
