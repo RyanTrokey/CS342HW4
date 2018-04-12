@@ -96,14 +96,23 @@ public class MCMAQuestion extends MCQuestion
     return;
   }
   
-  public double getValue() {
-    double points = 0.0;
-    for (int i = 0; i < studentAnswer.size(); i++){
-      points += super.getValue((MCAnswer)studentAnswer.get(i));
-    }
-    points = ((points + baseCredit) * maxValue);
-    return points;
-  }
+  public double getValue()
+	{
+		double score = 0.0;
+		score = baseCredit;
+		
+		for(int i=0; i<studentAnswer.size(); i++)
+		{
+			MCMAAnswer a = (MCMAAnswer)studentAnswer.get(i);
+			score += a.creditIfSelected;
+		}
+		
+		score = score * maxValue;
+		
+		System.out.println("MCMA: " + score);
+		
+		return score;
+	}
   
   public void save(PrintWriter p)
   {
