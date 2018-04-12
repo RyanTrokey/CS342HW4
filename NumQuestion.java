@@ -53,12 +53,37 @@ public class NumQuestion extends Question
 	
 	public void getAnswerFromStudent()
 	{
+		print();
+		System.out.println();
+		
+		Scanner input = ScannerFactory.getScanner();
+		
+		String s = input.nextLine();
+		
+		double d = Double.parseDouble(s);
+		
+		NumAnswer answer = new NumAnswer(d);
+		
+		studentAnswer = answer;
+		
+		NumAnswer na = (NumAnswer)studentAnswer;
+		
+		System.out.println(na.answer);
+		
 		return;
 	}
 	
 	public double getValue()
 	{
 		double value = 0.0;
+		NumAnswer s = (NumAnswer)studentAnswer;
+		NumAnswer r = (NumAnswer)rightAnswer;
+		
+		if(s.answer >= (r.answer-tolerance) && s.answer <= (r.answer + tolerance))
+			value = maxValue;
+		
+		System.out.println("NA: " + value);
+		
 		return value;
 	}
 	
