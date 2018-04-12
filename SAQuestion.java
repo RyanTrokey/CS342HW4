@@ -61,15 +61,15 @@ public class SAQuestion extends Question
   
   public void save(PrintWriter p){
     p.println(maxValue);
+    p.println(text);
     SAAnswer ans = (SAAnswer)rightAnswer;
-    p.println(ans.text);
     super.rightAnswer.save(p);
     return;
   }
   public void saveStudentAnswers(PrintWriter p){
-   p.println(maxValue);
-   p.println(text);
-   SAAnswer ans = (SAAnswer)studentAnswer;
-   p.println(ans.text);
- }
+    p.println(maxValue);
+    p.println(text);
+    SAAnswer ans = (SAAnswer)studentAnswer;
+    p.println(ans.text);
+  }
 }
