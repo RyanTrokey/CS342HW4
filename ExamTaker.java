@@ -1,9 +1,12 @@
+//Boris Pisabaj
+//bpisabaj
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.*;
 
 public class ExamTaker {
+<<<<<<< HEAD
  private static Exam currentExam;
  
  public static void main(String[] args) {
@@ -112,6 +115,115 @@ public class ExamTaker {
   }
   
   
+=======
+	private static Exam currentExam;
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		printInfo();
+		ArrayList<Integer> positions = new ArrayList<Integer>();
+		String studentName;
+		String uin;
+		Scanner sc;
+		
+		sc = ScannerFactory.getKeyboardScanner();
+		System.out.println("Enter Student name, then press enter and type UIN");
+		studentName = sc.nextLine();
+		uin = sc.nextLine();
+		loadExamFile(sc);
+		int numQuestions = currentExam.getNumQuestions();
+		answerRoutine(numQuestions, positions);
+		saveAnswerInfo(studentName, uin);
+		
+	}
+	
+	public static void printInfo(){
+		System.out.println("Work by Boris Pisabaj, bpisabaj, 673046056");
+	}
+	public static void loadExamFile(Scanner sc){
+		
+		  String filename = "";
+		    File sampleExamFile = new File( filename );
+		    
+		    while( !sampleExamFile.exists() ){
+		      System.out.println( "Enter the filename of the exam you want to take: " );
+		      if( sc.hasNextLine() )
+		        filename = sc.nextLine(); 
+		      sampleExamFile = new File( filename );
+		    }
+		    Scanner scanExam;
+			try {
+				scanExam = new Scanner( sampleExamFile );
+				currentExam = new Exam( scanExam );
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
+		
+	}
+	
+	public static void gettingAllAnswers(int numQuestions){
+		for(int i = 0; i < currentExam.getNumQuestions();i++){
+			currentExam.getAnswerFromStudent(i);
+		}
+	}
+	
+	public static void reAnswering(ArrayList<Integer> pos){
+		if(pos.isEmpty()){
+			return;
+		}
+		for(int i: pos){
+			currentExam.getAnswerFromStudent(i);
+		}
+	}
+	public static ArrayList<Integer> specifyQuestionsToRetry(ArrayList<Integer> pos){
+		
+		Scanner sc = ScannerFactory.getKeyboardScanner();
+		String tempPos = "-";
+		System.out.println("Enter questions to re answer. Type 'done' when...you're done");
+		tempPos = sc.nextLine();
+		while(!tempPos.equalsIgnoreCase("done")){
+			pos.add(Integer.parseInt(tempPos));
+		}
+		return pos;
+	}
+	
+	
+	
+	public static ArrayList<Integer> determineRetry(ArrayList<Integer> pos){
+		Scanner sc = ScannerFactory.getKeyboardScanner();
+		ArrayList<Integer> newPos = new ArrayList<Integer>();
+		System.out.println("Do you want to re answer any questions");
+		if((sc.nextLine()).equalsIgnoreCase("yes")){
+			newPos = specifyQuestionsToRetry(pos);
+		}
+		else{
+			System.out.println("Very well, will continue with exam");
+			return newPos;
+		}
+		return newPos;
+	}
+	
+	
+	 public static int determineUnansweredQuestions(){
+		 int totalUnanswered = currentExam.getNumUnanswered();
+		 Scanner sc = ScannerFactory.getKeyboardScanner();
+		 if(totalUnanswered > 0){
+			 System.out.println("You left " + totalUnanswered + " Questions unanswered. Would you like to try to answer them?");
+			 if(sc.nextLine().equalsIgnoreCase("Yes")){
+				 gettingAllAnswers(totalUnanswered);
+			 }
+			 else{
+				 return 0;
+			 }
+		 }
+		 return 1;
+		 
+	 }
+	 
+	 
+>>>>>>> 7be39093a64441f94fea6e0b576531af86e13fc2
 
   public static boolean answerRoutine(int numQuestions, ArrayList<Integer> pos){
    Scanner sc = ScannerFactory.getKeyboardScanner();
