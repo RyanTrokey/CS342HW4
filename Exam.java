@@ -146,43 +146,72 @@ public class Exam
   }
   
   public void getAnswerFromStudent(int position)
-  {
-    SAQuestion saq;
-    MCSAQuestion mcsaq;
-    MCMAQuestion mcmaq;
-    NumQuestion nq;
-    
-    int i = 1;
-    for(Question q : questions)
-    {
-      if(i == position)
-      {
-        if(q instanceof SAQuestion)
-        {
-          saq = (SAQuestion)q;
-          saq.getAnswerFromStudent();
-        }
-        else if(q instanceof MCSAQuestion)
-        {
-          mcsaq = (MCSAQuestion)q;
-          mcsaq.getAnswerFromStudent();
-        }
-        else if(q instanceof MCMAQuestion)
-        {
-          mcmaq = (MCMAQuestion)q;
-          mcmaq.getAnswerFromStudent();
-        }
-        else
-        {
-          nq = (NumQuestion)q;
-          nq.getAnswerFromStudent();
-        }
-      }
-      i++;
-    }
-    
-    return;
-  }
+	{
+		SAQuestion saq;
+		MCSAQuestion mcsaq;
+		MCMAQuestion mcmaq;
+		NumQuestion nq;
+		
+		if(position < 0)
+		{
+			for(Question q : questions)
+			{
+				if(q instanceof SAQuestion)
+				{
+					saq = (SAQuestion)q;
+					saq.getAnswerFromStudent();
+				}
+				else if(q instanceof MCSAQuestion)
+				{
+					mcsaq = (MCSAQuestion)q;
+					mcsaq.getAnswerFromStudent();
+				}
+				else if(q instanceof MCMAQuestion)
+				{
+					mcmaq = (MCMAQuestion)q;
+					mcmaq.getAnswerFromStudent();
+				}
+				else
+				{
+					nq = (NumQuestion)q;
+					nq.getAnswerFromStudent();
+				}
+			}
+		}
+		else
+		{
+			int i = 1;
+			for(Question q : questions)
+			{
+				if(i == position)
+				{
+					if(q instanceof SAQuestion)
+					{
+						saq = (SAQuestion)q;
+						saq.getAnswerFromStudent();
+					}
+					else if(q instanceof MCSAQuestion)
+					{
+						mcsaq = (MCSAQuestion)q;
+						mcsaq.getAnswerFromStudent();
+					}
+					else if(q instanceof MCMAQuestion)
+					{
+						mcmaq = (MCMAQuestion)q;
+						mcmaq.getAnswerFromStudent();
+					}
+					else
+					{
+						nq = (NumQuestion)q;
+						nq.getAnswerFromStudent();
+					}
+				}
+				i++;
+			}
+		}
+		
+		return;
+	}
   
   public double getValue()
   {
