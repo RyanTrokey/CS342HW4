@@ -1,0 +1,7 @@
+Student info
+exam3.txt
+
+MCMAAnswer
+2
+blue
+red

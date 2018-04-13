@@ -1,0 +1,11 @@
+mike
+MCMAQuestion
+5.0
+hello
+0.0
+5
+3.0 blue
+2.0 red
+0.0 green
+0.0 yellow
+0.0 orange

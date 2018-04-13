@@ -79,9 +79,8 @@ public class SAQuestion extends Question
   
   public void restoreStudentAnswers(Scanner scan){
     String answerLookup = scan.nextLine();
-    if (answerLookup.equals("MCSAAnswer")){
-      answerLookup = scan.nextLine();
-      studentAnswer.equals(answerLookup);
+    if (answerLookup.equals("SAAnswer")){
+      studentAnswer = getNewAnswer(scan.nextLine());
     }
   }
 }
