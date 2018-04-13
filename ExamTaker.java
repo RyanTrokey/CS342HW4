@@ -8,6 +8,7 @@ public class ExamTaker {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		printInfo();
 		ArrayList<Integer> positions = new ArrayList<Integer>();
 		String studentName;
 		String uin;
