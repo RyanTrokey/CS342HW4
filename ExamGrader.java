@@ -6,6 +6,8 @@ public class ExamGrader
   public static void main(String[] args) throws IOException{
     System.out.println();
     
+      System.out.println("ExamGrader done by Michael Elyafi, melyaf2, 667115883");
+    
     Scanner scan = ScannerFactory.getKeyboardScanner();
     System.out.print("Enter the exam name with extension : ");
     String inputExam = scan.nextLine();
