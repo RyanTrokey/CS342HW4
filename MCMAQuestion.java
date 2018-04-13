@@ -27,6 +27,12 @@ public class MCMAQuestion extends MCQuestion
     return;
   }
   
+    public void clearStudentAnswers(boolean answerAgain){
+   if(answerAgain == true){
+    this.studentAnswer.clear();
+   }
+  }
+  
   public MCMAQuestion(Scanner scanner)
   {
     super.answers = new ArrayList<MCAnswer>();
@@ -85,8 +91,6 @@ public class MCMAQuestion extends MCQuestion
       s = input.nextLine();
     }
     
-    
-    
     System.out.println();
     
     for(Answer a : studentAnswer)
@@ -96,12 +100,6 @@ public class MCMAQuestion extends MCQuestion
     }
     
     return;
-  }
-  
-  public void clearStudentAnswers(boolean answerAgain){
-	  if(answerAgain == true){
-		  this.studentAnswer.clear();
-	  }
   }
   
   public double getValue() {
