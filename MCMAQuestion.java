@@ -97,12 +97,20 @@ public class MCMAQuestion extends MCQuestion
   }
   
   public double getValue() {
-    double points = 0.0;
-    for (int i = 0; i < studentAnswer.size(); i++){
-      points += super.getValue((MCAnswer)studentAnswer.get(i));
+    double score = 0.0;
+    score = baseCredit;
+    
+    for(int i=0; i<studentAnswer.size(); i++)
+    {
+      MCMAAnswer a = (MCMAAnswer)studentAnswer.get(i);
+      score += a.creditIfSelected;
     }
-    points = ((points + baseCredit) * maxValue);
-    return points;
+    
+    score = score * maxValue;
+    
+    System.out.println("MCMA: " + score);
+    
+    return score;
   }
   
   public void save(PrintWriter p)
@@ -120,15 +128,25 @@ public class MCMAQuestion extends MCQuestion
     return;
   }
   public void saveStudentAnswers(PrintWriter p) {
+    p.println("MCMAAnswer");
     p.println(studentAnswer.size());
     for(Answer answer : studentAnswer) {
       ((MCMAAnswer)answer).saveStudentAnswers(p);
     }
   } 
-  
-  public void restoreStudentAnswers(Scanner scanner)
-  {
-    return;
+  public void restoreStudentAnswers(Scanner scan){
+    String answerLookup = scan.nextLine();
+    if (answerLookup.equals("MCMAAnswer")){
+      int range = Integer.parseInt(scan.nextLine());
+      int temp = 0;
+      for (temp = 0; temp < range; temp++){
+        answerLookup = scan.nextLine();
+        for(Answer answer : studentAnswer) {
+          if (answer.equals(answerLookup)){
+            studentAnswer.add(answer);
+          }
+        }
+      }
+    }
   }
-  
 }

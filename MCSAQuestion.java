@@ -80,7 +80,15 @@ public class MCSAQuestion extends MCQuestion
   }
   
   public double getValue(){
-    return super.getValue((MCSAAnswer)studentAnswer) * maxValue;
+    double val = 0.0;
+    
+    MCSAAnswer a = (MCSAAnswer)studentAnswer;
+    
+    val = a.creditIfSelected * maxValue;
+    
+    System.out.println("MCSA: " + val);
+    
+    return val;
   }
   
   public void save(PrintWriter p){
@@ -89,8 +97,15 @@ public class MCSAQuestion extends MCQuestion
     super.save(p);
   }
   public void saveStudentAnswers(PrintWriter writingData){
+    writingData.println("MCSAAnswer");
     MCSAAnswer tempstudent = (MCSAAnswer)studentAnswer;
     writingData.println(tempstudent.text + "\n");
   }
-  
+  public void restoreStudentAnswers(Scanner scan){
+    String answerLookup = scan.nextLine();
+    if (answerLookup.equals("MCSAAnswer")){
+      answerLookup = scan.nextLine();
+      studentAnswer.equals(answerLookup);
+    }
+  }
 }
