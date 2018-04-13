@@ -1,3 +1,5 @@
+//Boris Pisabaj
+//bpisabaj
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
@@ -13,13 +15,13 @@ public class ExamTaker {
 		String studentName;
 		String uin;
 		Scanner sc;
-		int numQuestions = currentExam.getNumQuestions();
+		
 		sc = ScannerFactory.getKeyboardScanner();
 		System.out.println("Enter Student name, then press enter and type UIN");
 		studentName = sc.nextLine();
 		uin = sc.nextLine();
-		loadExamFile();
-		
+		loadExamFile(sc);
+		int numQuestions = currentExam.getNumQuestions();
 		answerRoutine(numQuestions, positions);
 		saveAnswerInfo(studentName, uin);
 		
@@ -28,27 +30,26 @@ public class ExamTaker {
 	public static void printInfo(){
 		System.out.println("Work by Boris Pisabaj, bpisabaj, 673046056");
 	}
-	public static void loadExamFile(){
-		Scanner sc = ScannerFactory.getKeyboardScanner();
-		Scanner s;
-		String examName;
-		File examFile;
-		System.out.println("What exam file do you want to load?");
-		examName = sc.nextLine();
-		examFile = new File(examName);
-		while(!examFile.exists()){
-			System.out.println("Sorry, file specified does not exist");
-			System.out.println("What exam file do you want to load?");
-			examName = sc.nextLine();
-			examFile = new File(examName);
-		}
+	public static void loadExamFile(Scanner sc){
 		
-		try {
-			s = new Scanner(examFile);
-			currentExam = new Exam(s);
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		}
+		  String filename = "";
+		    File sampleExamFile = new File( filename );
+		    
+		    while( !sampleExamFile.exists() ){
+		      System.out.println( "Enter the filename of the exam you want to take: " );
+		      if( sc.hasNextLine() )
+		        filename = sc.nextLine(); 
+		      sampleExamFile = new File( filename );
+		    }
+		    Scanner scanExam;
+			try {
+				scanExam = new Scanner( sampleExamFile );
+				currentExam = new Exam( scanExam );
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    
 		
 	}
 	
