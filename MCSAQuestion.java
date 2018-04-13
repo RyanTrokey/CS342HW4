@@ -85,7 +85,6 @@ public class MCSAQuestion extends MCQuestion
   
   public void save(PrintWriter p){
     p.println(maxValue);
-    p.println(super.text);
     super.save(p);
   }
   public void saveStudentAnswers(PrintWriter writingData){

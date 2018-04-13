@@ -5,9 +5,6 @@ public class ExamGrader
 {
   public static void main(String[] args) throws IOException{
     System.out.println();
-    int uploadCheck = 0;
-    
-    int examCheck = 0;
     
     Scanner scan = ScannerFactory.getKeyboardScanner();
     System.out.print("Enter the exam name with extension : ");
@@ -18,17 +15,13 @@ public class ExamGrader
     
     File fileAnswer = new File(inputAnswer);
     Scanner scannerAnswer = new Scanner(fileAnswer);
-    
-    List<String> list = new ArrayList<String>();
-    while (scannerAnswer.hasNextLine()) {
-      list.add(scannerAnswer.nextLine());
-    }
-    
-    System.out.println(list.get(1));
+    String studentInfo = scannerAnswer.nextLine();
+    String examName = scannerAnswer.nextLine();
+    System.out.println(examName);
     if (inputExam == null || inputExam.isEmpty()){
-         inputExam = list.get(1);
+         inputExam = examName;
     }
-    else if (!list.get(1).equals(inputExam)){
+    else if (!examName.equals(inputExam)){
       System.out.println("This exam does not match with these answers");
       return;
     }
@@ -40,5 +33,8 @@ public class ExamGrader
     
     exam.restoreStudentAnswers(scannerAnswer);
     exam.reportQuestionValues();
+    
+    //File studentAnswerFile = new File(studentInfo + "_score.csv");
+          //PrintWriter  = new PrintWriter(saveFile);
   }
 }

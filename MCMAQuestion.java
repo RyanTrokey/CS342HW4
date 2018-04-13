@@ -126,9 +126,19 @@ public class MCMAQuestion extends MCQuestion
     }
   } 
   
-  public void restoreStudentAnswers(Scanner scanner)
-  {
-    return;
+  public void restoreStudentAnswers(Scanner scan){
+    String answerLookup = scan.nextLine();
+    if (answerLookup.equals("MCMAAnswer")){
+      int range = Integer.parseInt(scan.nextLine());
+      int temp = 0;
+      for (temp = 0; temp < range; temp++){
+        answerLookup = scan.nextLine();
+        for(Answer answer : studentAnswer) {
+          if (answer.equals(answerLookup)){
+            studentAnswer.add(answer);
+          }
+        }
+      }
+    }
   }
-  
 }
