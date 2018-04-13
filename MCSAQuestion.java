@@ -91,5 +91,11 @@ public class MCSAQuestion extends MCQuestion
     MCSAAnswer tempstudent = (MCSAAnswer)studentAnswer;
     writingData.println(tempstudent.text + "\n");
   }
-  
+    public void restoreStudentAnswers(Scanner scan){
+    String answerLookup = scan.nextLine();
+    if (answerLookup.equals("MCSAAnswer")){
+      answerLookup = scan.nextLine();
+      studentAnswer.equals(answerLookup);
+    }
+  }
 }
