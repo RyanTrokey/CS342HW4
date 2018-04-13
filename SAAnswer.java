@@ -29,6 +29,6 @@ public class SAAnswer extends Answer
     p.println(text);
   }
   public void saveStudentAnswers(PrintWriter p){
-    p.println(text);
-  }
+   p.println(text);
+ }
 }

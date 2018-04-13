@@ -60,18 +60,18 @@ public abstract class MCQuestion extends Question
   
   public double getValue(MCAnswer answer)
   {
-    double points = 0.0;
-    for (int i = 0; i < answers.size(); i++){
-      points += answers.get(i).getCredit(answer);
-    }
-    return points;
+   double points = 0.0;
+   for (int i = 0; i < answers.size(); i++){
+     points += answers.get(i).getCredit(answer);
+   }
+   return points;
   }
   
   public void save(PrintWriter p){
+    p.println(this.text);
     for (int i = 0; i < answers.size(); i++){
       answers.get(i).save(p);
     }
+    
   }
-  
-  
 }

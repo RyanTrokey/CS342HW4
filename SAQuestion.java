@@ -50,38 +50,26 @@ public class SAQuestion extends Question
     return;
   }
   
-  public double getValue()
-  {
-    double val = 0.0;
-    
-    SAAnswer s = (SAAnswer)studentAnswer;
-    SAAnswer r = (SAAnswer)rightAnswer;
-    
-    if(s.text.equals(r.text))
-      val = maxValue;
-    
-    System.out.println("SA: " + val);  
-    return val;
+  public double getValue(){
+    if(studentAnswer.getCredit(rightAnswer) > 0){
+      return studentAnswer.getCredit(rightAnswer);
+    }
+    else{
+      return 0.0;
+    }
   }
   
   public void save(PrintWriter p){
     p.println(maxValue);
-    p.println(text);
     SAAnswer ans = (SAAnswer)rightAnswer;
+    p.println(ans.text);
     super.rightAnswer.save(p);
     return;
   }
   public void saveStudentAnswers(PrintWriter p){
-    p.println("SAAnswer");
-    SAAnswer ans = (SAAnswer)studentAnswer;
-    p.println(ans.text);
-  }
-  
-  public void restoreStudentAnswers(Scanner scan){
-    String answerLookup = scan.nextLine();
-    if (answerLookup.equals("SAAnswer")){
-      answerLookup = scan.nextLine();
-      studentAnswer.equals(answerLookup);
-    }
-  }
+   p.println(maxValue);
+   p.println(text);
+   SAAnswer ans = (SAAnswer)studentAnswer;
+   p.println(ans.text);
+ }
 }
