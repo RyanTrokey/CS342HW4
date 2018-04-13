@@ -27,10 +27,10 @@ public class MCMAQuestion extends MCQuestion
     return;
   }
   
-    public void clearStudentAnswers(boolean answerAgain){
-   if(answerAgain == true){
-    this.studentAnswer.clear();
-   }
+  public void clearStudentAnswers(boolean answerAgain){
+    if(answerAgain == true){
+      this.studentAnswer.clear();
+    }
   }
   
   public MCMAQuestion(Scanner scanner)
@@ -139,7 +139,9 @@ public class MCMAQuestion extends MCQuestion
       int temp = 0;
       for (temp = 0; temp < range; temp++){
         answerLookup = scan.nextLine();
+                  System.out.println(answerLookup);
         for(Answer answer : studentAnswer) {
+
           if (answer.equals(answerLookup)){
             studentAnswer.add(answer);
           }

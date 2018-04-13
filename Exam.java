@@ -10,7 +10,6 @@ public class Exam
   public Exam()
   {
     questions = new ArrayList<Question>();
-    unansweredQuestions = new ArrayList<Question>();
     return;
   }
   
@@ -18,7 +17,6 @@ public class Exam
   {
     questions = new ArrayList<Question>();
     unansweredQuestions = new ArrayList<Question>();
-
     text = Text;
     return;
   }
@@ -26,8 +24,7 @@ public class Exam
   public Exam(Scanner scanner)
   {
     questions = new ArrayList<Question>();
-    unansweredQuestions = new ArrayList<Question>();
-
+     unansweredQuestions = new ArrayList<Question>();
     String line = scanner.nextLine();
     text = line;
     while(scanner.hasNextLine())
@@ -152,149 +149,138 @@ public class Exam
   }
   
   public void getAnswerFromStudent(int position)
-	{
-	  SAQuestion saq;
-	  MCSAQuestion mcsaq;
-	  MCMAQuestion mcmaq;
-	  NumQuestion nq;
-	  Scanner checkInput = ScannerFactory.getKeyboardScanner();
-	  ArrayList<Question> temp = this.questions;
-	  if(getNumUnanswered() > 0){
-		 
-		  questions = this.unansweredQuestions;
-		  unansweredQuestions.clear();
-	  }
-	  
-		
-		if(position < 0)
-		{
-			for(Question q : questions)
-			{
-				 if(q instanceof SAQuestion)
-				    {
-				     saq = (SAQuestion)q;
-				     if(!checkInput.hasNextLine()){
-				    	 unansweredQuestions.add(saq);
-				     }
-				     else{
-				     saq.getAnswerFromStudent();
-				     }
-				    }
-				 else if(q instanceof MCSAQuestion)
-				    {
-				     mcsaq = (MCSAQuestion)q;
-				     if(!checkInput.hasNextLine()){
-				    	 unansweredQuestions.add(mcsaq);
-				     }
-				     else{
-				    	 mcsaq.getAnswerFromStudent();
-				     }
-				     
-				    }
-				    else if(q instanceof NumQuestion){
-				    	nq = (NumQuestion)q;
-				    	if(!checkInput.hasNextLine()){
-				       	 unansweredQuestions.add(nq);
-				        }
-				    	else{
-				    		nq.getAnswerFromStudent();
-				    	}
-				    }
-				    else
-				    {
-				    	
-				     mcmaq = (MCMAQuestion)q;
-				     if(!checkInput.hasNextLine()){
-				    	 unansweredQuestions.add(mcmaq);
-				     }
-				     else{
-				    	 mcmaq.clearStudentAnswers(true);
-				    	 mcmaq.getAnswerFromStudent();
-				     }
-				  }
-			}
-		}
-		else
-		{
-			int i = 1;
-			  for(Question q : questions)
-			  {
-			   if(i == position)
-			   {
-			    if(q instanceof SAQuestion)
-			    {
-			     saq = (SAQuestion)q;
-			     if(!checkInput.hasNextLine()){
-			    	 unansweredQuestions.add(saq);
-			     }
-			     else{
-			     saq.getAnswerFromStudent();
-			     }
-			    }
-			    else if(q instanceof MCSAQuestion)
-			    {
-			     mcsaq = (MCSAQuestion)q;
-			     if(!checkInput.hasNextLine()){
-			    	 unansweredQuestions.add(mcsaq);
-			     }
-			     else{
-			    	 mcsaq.getAnswerFromStudent();
-			     }
-			     
-			    }
-			    else if(q instanceof NumQuestion){
-			    	nq = (NumQuestion)q;
-			    	if(!checkInput.hasNextLine()){
-			       	 unansweredQuestions.add(nq);
-			        }
-			    	else{
-			    		nq.getAnswerFromStudent();
-			    	}
-			    }
-			    else
-			    {
-			    	
-			     mcmaq = (MCMAQuestion)q;
-			     if(!checkInput.hasNextLine()){
-			    	 unansweredQuestions.add(mcmaq);
-			     }
-			     else{
-			    	 mcmaq.clearStudentAnswers(true);
-			    	 mcmaq.getAnswerFromStudent();
-			     }
-			    }
-			   }
-			   i++;
-			  }
-			  questions = temp;
-		}
-		
-		return;
-	}
+ {
+   SAQuestion saq;
+   MCSAQuestion mcsaq;
+   MCMAQuestion mcmaq;
+   NumQuestion nq;
+   Scanner checkInput = ScannerFactory.getKeyboardScanner();
+   ArrayList<Question> temp = this.questions;
+   if(getNumUnanswered() > 0){
+   
+    questions = this.unansweredQuestions;
+    unansweredQuestions.clear();
+   }
+   
+  
+  if(position < 0)
+  {
+   for(Question q : questions)
+   {
+     if(q instanceof SAQuestion)
+        {
+         saq = (SAQuestion)q;
+         if(!checkInput.hasNextLine()){
+          unansweredQuestions.add(saq);
+         }
+         else{
+         saq.getAnswerFromStudent();
+         }
+        }
+     else if(q instanceof MCSAQuestion)
+        {
+         mcsaq = (MCSAQuestion)q;
+         if(!checkInput.hasNextLine()){
+          unansweredQuestions.add(mcsaq);
+         }
+         else{
+          mcsaq.getAnswerFromStudent();
+         }
+         
+        }
+        else if(q instanceof NumQuestion){
+         nq = (NumQuestion)q;
+         if(!checkInput.hasNextLine()){
+             unansweredQuestions.add(nq);
+            }
+         else{
+          nq.getAnswerFromStudent();
+         }
+        }
+        else
+        {
+         
+         mcmaq = (MCMAQuestion)q;
+         if(!checkInput.hasNextLine()){
+          unansweredQuestions.add(mcmaq);
+         }
+         else{
+          mcmaq.clearStudentAnswers(true);
+          mcmaq.getAnswerFromStudent();
+         }
+      }
+   }
+  }
+  else
+  {
+   int i = 1;
+     for(Question q : questions)
+     {
+      if(i == position)
+      {
+       if(q instanceof SAQuestion)
+       {
+        saq = (SAQuestion)q;
+        if(!checkInput.hasNextLine()){
+         unansweredQuestions.add(saq);
+        }
+        else{
+        saq.getAnswerFromStudent();
+        }
+       }
+       else if(q instanceof MCSAQuestion)
+       {
+        mcsaq = (MCSAQuestion)q;
+        if(!checkInput.hasNextLine()){
+         unansweredQuestions.add(mcsaq);
+        }
+        else{
+         mcsaq.getAnswerFromStudent();
+        }
+        
+       }
+       else if(q instanceof NumQuestion){
+        nq = (NumQuestion)q;
+        if(!checkInput.hasNextLine()){
+            unansweredQuestions.add(nq);
+           }
+        else{
+         nq.getAnswerFromStudent();
+        }
+       }
+       else
+       {
+        
+        mcmaq = (MCMAQuestion)q;
+        if(!checkInput.hasNextLine()){
+         unansweredQuestions.add(mcmaq);
+        }
+        else{
+         mcmaq.clearStudentAnswers(true);
+         mcmaq.getAnswerFromStudent();
+        }
+       }
+      }
+      i++;
+     }
+     questions = temp;
+  }
+  
+  return;
+ }
   
   
   public void answerTheUnanswered(int pos){
-		 ArrayList<Question> temp = unansweredQuestions;
-		 unansweredQuestions.clear();
-		 
-		 return;
-	 }
-	 
-  public int getNumUnanswered(){
-		return unansweredQuestions.size();
-	}
-  
-  public double getValue()
-  {
-    double score = 0.0;
-    
-    for(Question q : questions)
-    {
-      score += q.getValue();
-    }
-    
-    return score;
+   ArrayList<Question> temp = unansweredQuestions;
+   unansweredQuestions.clear();
+   
+   return;
   }
+  
+  public int getNumUnanswered(){
+  return unansweredQuestions.size();
+ }
+  
   
   public void reportQuestionValues()
   {
@@ -315,6 +301,20 @@ public class Exam
     
     System.out.println("The total value of the test is " + totalScore + " points.");
     return;
+  }
+  
+  public double totalScore()
+  {
+    int i = 1;
+    double score = 0.0;
+    double totalScore = 0.0;
+    for(Question q : questions)
+    {
+      score = q.getMaxValue();
+      totalScore += score;
+      i++;
+    }
+    return totalScore;
   }
   
   public int getNumQuestions()
@@ -388,18 +388,22 @@ public class Exam
     {
       if(questions.get(i) instanceof MCSAQuestion)
       {
+        scanner.nextLine();
         questions.get(i).restoreStudentAnswers(scanner);
       }
       if(questions.get(i) instanceof MCMAQuestion)
       {
+                scanner.nextLine();
         questions.get(i).restoreStudentAnswers(scanner);
       }
       if(questions.get(i) instanceof SAQuestion)
       {
+                scanner.nextLine();
         questions.get(i).restoreStudentAnswers(scanner);
       }
       if(questions.get(i) instanceof NumQuestion)
       {
+                scanner.nextLine();
         questions.get(i).restoreStudentAnswers(scanner);
       }
     }

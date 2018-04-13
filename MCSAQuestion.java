@@ -86,8 +86,6 @@ public class MCSAQuestion extends MCQuestion
     
     val = a.creditIfSelected * maxValue;
     
-    System.out.println("MCSA: " + val);
-    
     return val;
   }
   
@@ -105,7 +103,7 @@ public class MCSAQuestion extends MCQuestion
     System.out.println(answerLookup);
     if (answerLookup.equals("MCSAAnswer")){
       answerLookup = scan.nextLine();
-      for(Answer answer : studentAnswer) {
+      for(Answer answer : answers) {
         if (answer.equals(answerLookup)){
           studentAnswer = answer;
         }

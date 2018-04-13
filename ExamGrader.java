@@ -19,7 +19,7 @@ public class ExamGrader
     String examName = scannerAnswer.nextLine();
     System.out.println(examName);
     if (inputExam == null || inputExam.isEmpty()){
-         inputExam = examName;
+      inputExam = examName;
     }
     else if (!examName.equals(inputExam)){
       System.out.println("This exam does not match with these answers");
@@ -34,7 +34,19 @@ public class ExamGrader
     exam.restoreStudentAnswers(scannerAnswer);
     exam.reportQuestionValues();
     
-    //File studentAnswerFile = new File(studentInfo + "_score.csv");
-          //PrintWriter  = new PrintWriter(saveFile);
+    FileWriter studentAnswerFile = new FileWriter(studentInfo + "_score.csv");
+    studentAnswerFile.append(studentInfo);
+    studentAnswerFile.append(',');
+    studentAnswerFile.append("Total Score: " + exam.totalScore());
+    studentAnswerFile.append(',');
+    for (int i = 1; i < (exam.getNumQuestions() + 1); i++){
+      studentAnswerFile.append("Question " + i);
+      studentAnswerFile.append(',');
+      studentAnswerFile.append("Points");
+      studentAnswerFile.append(',');
+    }
+    studentAnswerFile.flush();
+    studentAnswerFile.close();
+    
   }
 }
